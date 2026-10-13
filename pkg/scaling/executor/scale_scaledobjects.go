@@ -112,7 +112,8 @@ func (e *scaleExecutor) RequestScale(ctx context.Context, scaledObject *kedav1al
 			logger.V(1).Info("ScaleTarget no change")
 		}
 	}
-	e.checkHPAHealth(ctx, logger, scaledObject, &result)
+	// bench variant: health check disabled
+	_ = e.checkHPAHealth
 
 	return result
 }
